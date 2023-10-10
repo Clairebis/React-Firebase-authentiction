@@ -12,7 +12,6 @@ function App() {
             <Route path="/register" element={<Form title="Register" />} />
           </Routes>
         </>
-        <Form />
       </div>
     </Router>
   );
