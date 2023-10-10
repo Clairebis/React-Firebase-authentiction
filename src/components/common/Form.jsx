@@ -1,7 +1,12 @@
 import { Box, TextField } from "@mui/material";
 import Button from "./Button";
 
-export default function BasicTextFields({ title }) {
+export default function BasicTextFields({
+  title,
+  setEmail,
+  setPassword,
+  handleAction,
+}) {
   return (
     <div>
       <div className="heading-container">
@@ -14,11 +19,21 @@ export default function BasicTextFields({ title }) {
         noValidate
         autoComplete="off"
       >
-        <TextField id="email" label="Enter email" variant="outlined" />
-        <TextField id="password" label="Enter password" variant="outlined" />
+        <TextField
+          id="email"
+          label="Enter email"
+          variant="outlined"
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <TextField
+          id="password"
+          label="Enter password"
+          variant="outlined"
+          onChange={(e) => setPassword(e.target.value)}
+        />
       </Box>
 
-      <Button title={title} />
+      <Button title={title} handleAction={handleAction} />
     </div>
   );
 }
