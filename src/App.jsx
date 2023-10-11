@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import "./App.css";
 import Form from "./components/common/Form";
 import { useState } from "react";
@@ -8,10 +8,12 @@ import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
 } from "firebase/auth";
+import Home from "./Home";
 
 function App() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const handleAction = (id) => {
     console.log(id);
@@ -21,6 +23,12 @@ function App() {
       createUserWithEmailAndPassword(authentication, email, password).then(
         (response) => {
           console.log(response);
+          sessionStorage.setItem(
+            "Auth Token",
+            response._tokenResponse.refreshToken,
+
+            navigate("/home")
+          );
         }
       );
     }
@@ -52,6 +60,7 @@ function App() {
               />
             }
           />
+          <Route path="/home" element={<Home />} />
         </Routes>
       </>
     </div>
