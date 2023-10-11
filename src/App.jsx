@@ -40,6 +40,20 @@ function App() {
         }
       );
     }
+
+    if (id === 1) {
+      signInWithEmailAndPassword(authentication, email, password).then(
+        (response) => {
+          console.log(response);
+          sessionStorage.setItem(
+            "Auth Token",
+            response._tokenResponse.refreshToken,
+
+            navigate("/home")
+          );
+        }
+      );
+    }
   };
 
   return (
