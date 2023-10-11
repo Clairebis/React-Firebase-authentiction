@@ -16,5 +16,15 @@ export default function Home() {
     }
   }, []);
 
-  return <div>Welcome to the Home Page</div>;
+  const handleLogout = () => {
+    sessionStorage.removeItem("Auth Token");
+    navigate("/login");
+  };
+
+  return (
+    <>
+      <div>Welcome to the Home Page</div>
+      <button onClick={handleLogout}>Log out</button>
+    </>
+  );
 }
