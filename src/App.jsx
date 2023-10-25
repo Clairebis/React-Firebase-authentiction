@@ -32,6 +32,9 @@ function App() {
     if (id === 2) {
       createUserWithEmailAndPassword(authentication, email, password)
         .then((response) => {
+          // Signed in
+          const user = response.user;
+          console.log(user);
           navigate("/home");
           sessionStorage.setItem(
             "Auth Token",
@@ -55,7 +58,9 @@ function App() {
     if (id === 1) {
       signInWithEmailAndPassword(authentication, email, password)
         .then((response) => {
-          console.log(response);
+          // Signed in
+          const user = response.user;
+          console.log(user);
           sessionStorage.setItem(
             "Auth Token",
             response._tokenResponse.refreshToken,
